@@ -12,7 +12,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Ecovista",
+  title: "EcoVista",
   description: "A Next.js weather app using the Open-Weather API",
 };
 
