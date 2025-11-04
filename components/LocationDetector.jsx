@@ -1,30 +1,33 @@
-"use client";
 
-import Image from "next/image";
-import { usePathname, useSearchParams } from "next/navigation";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+'use client'
+import { useState, useEffect } from 'react';
+import { useSearchParams, usePathname, useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 const LocationDetector = () => {
     const [loading, setLoading] = useState(false);
+
     const searchParams = useSearchParams();
-    const pathname = usePathname();
+    const pathName = usePathname();
     const router = useRouter();
 
     useEffect(() => {
         setLoading(true);
         const params = new URLSearchParams(searchParams);
-        if(navigator.geolocation) {
+
+        if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position) => {
-                 params.set("latitude", position.coords.latitude);
-                 params.set("longitude", position.coords.longitude);
-                 setLoading(false);
-                 router.push(`/current?${params.toString()}`);
+                params.set('latitude', position.coords.latitude);
+                params.set('longitude', position.coords.longitude);
+                setLoading(false);
+                router.push(`/current?${params.toString()}`);
             })
         }
-    }, [pathname, searchParams]);
-    return (
-        <div className="flex flex-col justify-center items-center h-screen bg-slate-700 text-white">
+
+    }, [pathName, searchParams]);
+
+  return (
+    <div className="flex flex-col justify-center items-center h-screen bg-slate-700 text-white">
         {
             loading && (
                 <>
@@ -39,7 +42,7 @@ const LocationDetector = () => {
             )
         }
     </div>
-    );
-};
+  )
+}
 
-export default LocationDetector;
+export default LocationDetector
