@@ -1,10 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-    /* Container configuration */
-    --container-center: true;
-    --container-padding: 1rem;
-
+   
     /* Font family */
     --font-family-inter: "Inter", sans-serif;
 }
@@ -16,6 +13,9 @@
 }
 
 @layer components {
+    .container{
+        @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+    }
     .wrapper {
         @apply relative grid min-h-screen max-w-full place-items-center overflow-y-auto bg-[#19243B];
     }
